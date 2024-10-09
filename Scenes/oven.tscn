@@ -1,10 +1,37 @@
-[gd_scene load_steps=4 format=3 uid="uid://dw8xks7h06bia"]
+[gd_scene load_steps=8 format=4 uid="uid://dw8xks7h06bia"]
 
 [ext_resource type="Script" path="res://Scripts/Oven.gd" id="1_v6mar"]
+[ext_resource type="Texture2D" uid="uid://c6l4mcusk68rx" path="res://Assets/Color Palette.png" id="2_srqt4"]
+[ext_resource type="Shader" path="res://Shaders/Outline.gdshader" id="3_upwuc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u8rsp"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_l2tcr"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c4qp8"]
+render_priority = -1
+shader = ExtResource("3_upwuc")
+shader_parameter/outline_color = null
+shader_parameter/outline_width = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n35ne"]
+next_pass = SubResource("ShaderMaterial_c4qp8")
+shading_mode = 0
+albedo_texture = ExtResource("2_srqt4")
+texture_filter = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_j0ml1"]
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"attribute_data": PackedByteArray("F9USP/1rCT4X1RI//WsJPhfVEj/9awk+F9USP/1rCT4X1RI//WsJPhfVEj/9awk+F9USP/1rCT4X1RI//WsJPhfVEj/9awk+F9USP/1rCT4X1RI//WsJPhfVEj/9awk+3juiPmLXtj3eO6I+Yte2Pd47oj5i17Y93juiPmLXtj0X1RI//WsJPhfVEj/9awk+F9USP/1rCT4X1RI//WsJPhfVEj/9awk+F9USP/1rCT4X1RI//WsJPhfVEj/9awk+F9USP/1rCT4X1RI//WsJPhfVEj/9awk+F9USP/1rCT4X1RI//WsJPhfVEj/9awk+F9USP/1rCT4X1RI//WsJPt47oj5i17Y93juiPmLXtj3eO6I+Yte2Pd47oj5i17Y93juiPmLXtj3eO6I+Yte2Pd47oj5i17Y93juiPmLXtj3eO6I+Yte2Pd47oj5i17Y93juiPmLXtj3eO6I+Yte2Pd47oj5i17Y93juiPmLXtj3eO6I+Yte2Pd47oj5i17Y9F9USP/1rCT4X1RI//WsJPhfVEj/9awk+F9USP/1rCT4X1RI//WsJPhfVEj/9awk+F9USP/1rCT4X1RI//WsJPhfVEj/9awk+F9USP/1rCT4X1RI//WsJPhfVEj/9awk+F9USP/1rCT4X1RI//WsJPhfVEj/9awk+F9USP/1rCT4X1RI//WsJPhfVEj/9awk+F9USP/1rCT4X1RI//WsJPg=="),
+"format": 34359742487,
+"index_count": 132,
+"index_data": PackedByteArray("AAABAAIAAgABAAMABAAFAAYABgAFAAcACAAJAAoACgAJAAsADAANAA4ADgANAA8AEAARABIAEgARABMAFAAVABYAFgAVABcAGAAZABoAGgAZABsAHAAdAB4AHgAdAB8AGQAcABsAGwAcAB4AHQAYAB8AHwAYABoAIAAhACIAIgAhACMAJAAlACYAJgAlACcAKAApACoAKgApACsALAAtAC4ALgAtAC8ABAAGADAAMAAGADEAMgAzABAAEAAzABEANAA1AAgACAA1AAkANgA3AAAAAAA3AAEAOAA5ADoAOgA5ADsAPAA9AD4APgA9AD8AAAACAEAAQAACAEEANAAIAEIAQgAIAEMA"),
+"material": SubResource("StandardMaterial3D_n35ne"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 68,
+"vertex_data": PackedByteArray("AACAvzMzMz8zMzO/AACAvwAAgL8zMzO/AACAvzMzMz8AAIC/AACAvwAAgL8AAIC/AACAvzMzMz8AAIC/AACAvwAAgL8AAIC/AACAPzMzMz8AAIC/AACAPwAAgL8AAIC/AACAPzMzMz8zMzO/AACAPwAAgL8zMzO/AACAPzMzMz8AAIA/AACAPwAAgL8AAIA/3uRHP97kR78AAIA/3uRHv97kR78AAIA/3uRHP97kR7/NzEy/3uRHv97kR7/NzEy/AACAPwAAgL8zMzO/AACAvwAAgL8zMzO/AACAPwAAgL8AAIA/AACAvwAAgL8AAIA/AACAvzMzMz8zMzO/AACAPzMzMz8zMzO/AACAvzMzMz8AAIA/AACAPzMzMz8AAIA/3uRHvwEw9j4AAIA/3uRHv97kR78AAIA/AACAvzMzMz8AAIA/AACAvwAAgL8AAIA/3uRHP97kR78AAIA/3uRHPwEw9j4AAIA/AACAPwAAgL8AAIA/AACAPzMzMz8AAIA/3uRHPwEw9j7NzEy/3uRHP97kR7/NzEy/3uRHvwEw9j7NzEy/3uRHv97kR7/NzEy/3uRHv97kR78AAIA/3uRHvwEw9j4AAIA/3uRHv97kR7/NzEy/3uRHvwEw9j7NzEy/3uRHvwEw9j4AAIA/3uRHPwEw9j4AAIA/3uRHvwEw9j7NzEy/3uRHPwEw9j7NzEy/3uRHPwEw9j4AAIA/3uRHP97kR78AAIA/3uRHPwEw9j7NzEy/3uRHP97kR7/NzEy/AACAvwAAgD8AAIC/AACAPwAAgD8AAIC/AACAPwAAgL8AAIC/AACAvwAAgL8AAIC/AACAPzMzMz8AAIC/AACAPwAAgL8AAIC/AACAvzMzMz8AAIA/AACAvwAAgL8AAIA/AACAvwAAgD8AAIC/AACAPwAAgD8AAIC/AACAvwAAgD8zMzO/AACAPwAAgD8zMzO/AACAPzMzMz8zMzO/AACAvzMzMz8zMzO/AACAPwAAgD8zMzO/AACAvwAAgD8zMzO/AACAvwAAgD8zMzO/AACAvwAAgD8AAIC/AACAPwAAgD8AAIC/AACAPwAAgD8zMzO/AAD/f////78AAP9/////vwAA/3////+/AAD/f////7//////////v/////////+//////////7//////////v////3////+/////f////7////9/////v////3////+//3///////7//f///////v/9///////+//3///////7//fwAA////v/9/AAD///+//38AAP///7//fwAA////v/9///////+//3///////7//f///////v/9///////+//3//f////z//f/9/////P/9//3////8//3//f////z//f/9/////P/9//3////8//3//f////z//f/9/////P/9//3////8//3//f////z//f/9/////P/9//3////8/////f////7////9/////v////3////+/////f////7//fwAA////v/9/AAD///+//38AAP///7//fwAA////vwAA/3////+/AAD/f////78AAP9/////vwAA/3////+//////////7//////////v/9/AAD///+//38AAP///7////9/////v////3////+/AAD/f////78AAP9/////v/9///////+//3///////7//f///////v/9///////+//3//f////z//f/9/////P/9//3////8//3//f////z8AAP9/////vwAA/3////+/////f////7////9/////vw==")
+}]
+blend_shape_mode = 0
 
 [node name="Oven" type="StaticBody3D"]
 collision_layer = 2147483649
@@ -17,4 +44,5 @@ fullText = "Take Out"
 shape = SubResource("BoxShape3D_u8rsp")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_l2tcr")
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("ArrayMesh_j0ml1")

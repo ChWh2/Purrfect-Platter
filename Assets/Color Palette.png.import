@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1yagx8aaavjk"
-path="res://.godot/imported/Road.png-9b5cc2e197a413849735a4eff7b6212d.ctex"
+uid="uid://c6l4mcusk68rx"
+path="res://.godot/imported/Color Palette.png-d716fa13711325f54720e884a72d582a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Road.png"
-dest_files=["res://.godot/imported/Road.png-9b5cc2e197a413849735a4eff7b6212d.ctex"]
+source_file="res://Assets/Color Palette.png"
+dest_files=["res://.godot/imported/Color Palette.png-d716fa13711325f54720e884a72d582a.ctex"]
 
 [params]
 
@@ -23,7 +23,7 @@ compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
+roughness/mode=1
 roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false

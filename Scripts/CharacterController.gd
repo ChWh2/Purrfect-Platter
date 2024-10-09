@@ -30,7 +30,7 @@ func Interact():
 		$Label3D.global_position = closestInteractable. global_position
 		
 		if Input.is_action_just_pressed("Interact"):
-			closestInteractable.interactEvent(closestInteractableRadius)
+			closestInteractable.interact(closestInteractableRadius)
 		
 	else:
 		$Label3D.visible = false

@@ -8,6 +8,7 @@ enum state {EMPTY, FULL}
 var CurentState = state.EMPTY
 
 func _ready():
+	CanInteract = true
 	setPrompt(emptyText)
 
 func interactEvent(_distance):
