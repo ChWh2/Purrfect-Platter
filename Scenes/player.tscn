@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://cbbiwytnqg1wm"]
+[gd_scene load_steps=10 format=4 uid="uid://cbbiwytnqg1wm"]
 
 [ext_resource type="Script" path="res://Scripts/CharacterController.gd" id="1_buv3t"]
 [ext_resource type="Shader" path="res://Shaders/Outline.gdshader" id="2_4sn2b"]
@@ -57,6 +57,9 @@ shadow_mesh = SubResource("ArrayMesh_pdcbg")
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ofwsk"]
 radius = 0.25
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_2lhk7"]
+radius = 2.0
+
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 script = ExtResource("1_buv3t")
@@ -74,3 +77,20 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, -8.88178e-16, 0, -8.88178e-16, 1, 0, 0, 0, 1, 0, 0, 2.38419e-07)
 shape = SubResource("CapsuleShape3D_ofwsk")
+
+[node name="InteractionRadius" type="Area3D" parent="."]
+collision_layer = 2147483648
+collision_mask = 2147483648
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionRadius"]
+shape = SubResource("SphereShape3D_2lhk7")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -5.24537e-07)
+billboard = 1
+no_depth_test = true
+text = "Oven"
+font_size = 200
+
+[connection signal="body_entered" from="InteractionRadius" to="." method="InteractEnter"]
+[connection signal="body_exited" from="InteractionRadius" to="." method="InteractExit"]

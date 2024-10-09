@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dw8xks7h06bia"]
+
+[ext_resource type="Script" path="res://Scripts/Oven.gd" id="1_v6mar"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u8rsp"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_l2tcr"]
+
+[node name="Oven" type="StaticBody3D"]
+collision_layer = 2147483649
+collision_mask = 2147483649
+script = ExtResource("1_v6mar")
+emptyText = "Put In"
+fullText = "Take Out"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_u8rsp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_l2tcr")
