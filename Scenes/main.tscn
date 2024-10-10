@@ -1,6 +1,7 @@
-[gd_scene load_steps=27 format=4 uid="uid://c802ljbjsrs7s"]
+[gd_scene load_steps=29 format=4 uid="uid://c802ljbjsrs7s"]
 
 [ext_resource type="PackedScene" uid="uid://cbbiwytnqg1wm" path="res://Scenes/player.tscn" id="1_4acyf"]
+[ext_resource type="Script" path="res://Scripts/mainGameManager.gd" id="1_ur7al"]
 [ext_resource type="PackedScene" uid="uid://dw8xks7h06bia" path="res://Scenes/oven.tscn" id="4_f5kfh"]
 [ext_resource type="Material" uid="uid://wb6wcoupqby0" path="res://Materials/Standard.tres" id="4_xf2gx"]
 [ext_resource type="PackedScene" uid="uid://dp6m3merowmpf" path="res://Scenes/fish.tscn" id="5_2u07w"]
@@ -225,7 +226,15 @@ data = PackedVector3Array(-0.26, 0.36, -0.01, -0.26, -0.14, -0.01, -0.26, -0.14,
 [sub_resource type="BoxShape3D" id="BoxShape3D_gvvnr"]
 size = Vector3(1, 3, 4)
 
+[sub_resource type="Curve3D" id="Curve3D_tsiv3"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 5, 0, -5, 0, 0, 0, 0, 0, 0, 0, 0, -5, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 10, 0, 7),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
 [node name="Main" type="Node3D"]
+script = ExtResource("1_ur7al")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_exvx2")
@@ -235,7 +244,7 @@ transform = Transform3D(0.77056, -0.551977, 0.318682, 1.47563e-08, 0.499998, 0.8
 shadow_enabled = true
 
 [node name="player" parent="." instance=ExtResource("1_4acyf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0.1, -5)
 
 [node name="Oven" parent="." instance=ExtResource("4_f5kfh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, -0.5, -8)
@@ -323,4 +332,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0.5, 7)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Map/InvisibleWall"]
 shape = SubResource("BoxShape3D_gvvnr")
 
-[editable path="rawFish"]
+[node name="Customers" type="Path3D" parent="."]
+curve = SubResource("Curve3D_tsiv3")
+
+[node name="Spawn" type="Node3D" parent="Customers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 7)
+
+[node name="CustomerSpawnTimer" type="Timer" parent="."]
+wait_time = 15.0
+autostart = true
+
+[connection signal="timeout" from="CustomerSpawnTimer" to="." method="customerSpawnTimeout"]

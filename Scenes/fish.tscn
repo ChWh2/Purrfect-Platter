@@ -32,8 +32,6 @@ next_pass = SubResource("ShaderMaterial_x54oa")
 diffuse_mode = 3
 specular_mode = 1
 albedo_texture = ExtResource("1_xx64m")
-uv1_scale = Vector3(1, 0.1, 1)
-uv1_offset = Vector3(0.1, 0.8, 0)
 texture_filter = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_6aqrt"]
@@ -75,6 +73,7 @@ size = Vector3(0.1, 0.5, 0.3)
 [node name="fish" type="RigidBody3D" parent="."]
 collision_layer = 2147483650
 collision_mask = 2147483650
+continuous_cd = true
 script = SubResource("GDScript_6hsf7")
 itemName = "Fish"
 itemID = 1

@@ -24,3 +24,6 @@ func _process(_delta: float) -> void:
 func useItem() -> void:
 	heldItem.free()
 	heldItem = null
+
+func endGame() -> void:
+	print("endGame")

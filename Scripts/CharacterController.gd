@@ -5,7 +5,7 @@ var speed = 5.0
 
 @onready var body = $Mesh
 
-var interactsInRadius : Array[Node3D]
+var interactsInRadius : Array[Interactable]
 
 func InteractEnter(enterBody : Node3D):
 	interactsInRadius.append(enterBody)
@@ -15,25 +15,25 @@ func InteractExit(exitBody : Node3D):
 	interactsInRadius.remove_at(bodyInArray)
 
 func Interact():
+	$Label3D.visible = false
+	
 	if interactsInRadius.size() > 0:
-		$Label3D.visible = true
-		
 		var closestInteractable : Node3D
 		var closestInteractableRadius = 100.0
 		
 		for interactible in interactsInRadius.size():
-			if position.distance_to(interactsInRadius[interactible].position) < closestInteractableRadius:
-				closestInteractableRadius = position.distance_to(interactsInRadius[interactible].position)
-				closestInteractable = interactsInRadius[interactible]
+			if interactsInRadius[interactible].CanInteract:
+				if position.distance_to(interactsInRadius[interactible].position) < closestInteractableRadius:
+					closestInteractableRadius = position.distance_to(interactsInRadius[interactible].position)
+					closestInteractable = interactsInRadius[interactible]
 		
-		$Label3D.text = closestInteractable.getPrompt()
-		$Label3D.global_position = closestInteractable. global_position
-		
-		if Input.is_action_just_pressed("Interact"):
-			closestInteractable.interact(closestInteractableRadius)
-		
-	else:
-		$Label3D.visible = false
+		if closestInteractable:
+			$Label3D.visible = true
+			$Label3D.text = closestInteractable.getPrompt()
+			$Label3D.global_position = closestInteractable.global_position
+			
+			if Input.is_action_just_pressed("Interact"):
+				closestInteractable.interact(closestInteractableRadius)
 
 func _physics_process(_delta: float) -> void:
 	
