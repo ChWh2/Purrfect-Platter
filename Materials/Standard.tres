@@ -11,4 +11,7 @@ shader_parameter/outline_width = 2.0
 
 [resource]
 next_pass = SubResource("ShaderMaterial_x54oa")
+diffuse_mode = 3
+specular_mode = 1
 albedo_texture = ExtResource("1_uu7t7")
+texture_filter = 0

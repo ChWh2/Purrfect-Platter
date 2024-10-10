@@ -1,22 +1,10 @@
-[gd_scene load_steps=12 format=4 uid="uid://dw8xks7h06bia"]
+[gd_scene load_steps=10 format=4 uid="uid://dw8xks7h06bia"]
 
 [ext_resource type="Script" path="res://Scripts/Oven.gd" id="1_v6mar"]
-[ext_resource type="Texture2D" uid="uid://c6l4mcusk68rx" path="res://Assets/Color Palette.png" id="2_srqt4"]
+[ext_resource type="Material" uid="uid://wb6wcoupqby0" path="res://Materials/Standard.tres" id="2_btd2f"]
 [ext_resource type="Shader" path="res://Shaders/Outline.gdshader" id="3_upwuc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u8rsp"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_c4qp8"]
-render_priority = -1
-shader = ExtResource("3_upwuc")
-shader_parameter/outline_color = null
-shader_parameter/outline_width = 2.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n35ne"]
-next_pass = SubResource("ShaderMaterial_c4qp8")
-shading_mode = 0
-albedo_texture = ExtResource("2_srqt4")
-texture_filter = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_j0ml1"]
 _surfaces = [{
@@ -25,7 +13,7 @@ _surfaces = [{
 "format": 34359742487,
 "index_count": 132,
 "index_data": PackedByteArray("AAABAAIAAgABAAMABAAFAAYABgAFAAcACAAJAAoACgAJAAsADAANAA4ADgANAA8AEAARABIAEgARABMAFAAVABYAFgAVABcAGAAZABoAGgAZABsAHAAdAB4AHgAdAB8AGQAcABsAGwAcAB4AHQAYAB8AHwAYABoAIAAhACIAIgAhACMAJAAlACYAJgAlACcAKAApACoAKgApACsALAAtAC4ALgAtAC8ABAAGADAAMAAGADEAMgAzABAAEAAzABEANAA1AAgACAA1AAkANgA3AAAAAAA3AAEAOAA5ADoAOgA5ADsAPAA9AD4APgA9AD8AAAACAEAAQAACAEEANAAIAEIAQgAIAEMA"),
-"material": SubResource("StandardMaterial3D_n35ne"),
+"material": ExtResource("2_btd2f"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 68,

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://c802ljbjsrs7s"]
+[gd_scene load_steps=28 format=4 uid="uid://c802ljbjsrs7s"]
 
 [ext_resource type="PackedScene" uid="uid://cbbiwytnqg1wm" path="res://Scenes/player.tscn" id="1_4acyf"]
 [ext_resource type="PackedScene" uid="uid://dw8xks7h06bia" path="res://Scenes/oven.tscn" id="4_f5kfh"]
@@ -226,6 +226,9 @@ shadow_mesh = SubResource("ArrayMesh_krpwb")
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_xnnwn"]
 data = PackedVector3Array(-0.26, 0.36, -0.01, -0.26, -0.14, -0.01, -0.26, -0.14, -0.03, -0.26, -0.14, -0.03, -0.26, 0.36, -0.03, -0.26, 0.36, -0.01, 0.24, 0.36, -0.01, -0.26, 0.36, -0.01, -0.26, 0.36, -0.03, -0.26, 0.36, -0.03, 0.24, 0.36, -0.03, 0.24, 0.36, -0.01, 0.24, -0.14, -0.01, 0.24, 0.36, -0.01, 0.24, 0.36, -0.03, 0.24, 0.36, -0.03, 0.24, -0.14, -0.03, 0.24, -0.14, -0.01, -0.26, -0.14, -0.01, 0.24, -0.14, -0.01, 0.24, -0.14, -0.03, 0.24, -0.14, -0.03, -0.26, -0.14, -0.03, -0.26, -0.14, -0.01, 0.24, -0.14, -0.03, 0.24, 0.36, -0.03, -0.26, 0.36, -0.03, -0.26, 0.36, -0.03, -0.26, -0.14, -0.03, 0.24, -0.14, -0.03, -0.26, -0.14, -0.01, -0.26, 0.36, -0.01, 0.24, 0.36, -0.01, 0.24, 0.36, -0.01, 0.24, -0.14, -0.01, -0.26, -0.14, -0.01)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_gvvnr"]
+size = Vector3(1, 3, 4)
+
 [node name="Main" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -258,6 +261,7 @@ mesh = SubResource("ArrayMesh_lu5ew")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Map/Road"]
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Road/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_at704")
@@ -269,6 +273,7 @@ mesh = SubResource("ArrayMesh_yv2s5")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Map/Resturant"]
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Resturant/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_78yr3")
@@ -280,6 +285,7 @@ mesh = SubResource("ArrayMesh_k7mbk")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Map/Skyscrapper1"]
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Skyscrapper1/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_3d3sv")
@@ -291,6 +297,7 @@ mesh = SubResource("ArrayMesh_0ksqf")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Map/Skyscrapper2"]
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Skyscrapper2/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_4mi35")
@@ -302,6 +309,7 @@ mesh = SubResource("ArrayMesh_5eup1")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Map/Skyscrapper3"]
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Skyscrapper3/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_di03s")
@@ -313,6 +321,13 @@ mesh = SubResource("ArrayMesh_sfqd8")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Map/Concrete"]
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Concrete/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_xnnwn")
+
+[node name="InvisibleWall" type="StaticBody3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0.5, 7)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/InvisibleWall"]
+shape = SubResource("BoxShape3D_gvvnr")
