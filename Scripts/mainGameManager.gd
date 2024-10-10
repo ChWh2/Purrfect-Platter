@@ -13,15 +13,24 @@ func createCustomer():
 	
 	customers.append(newCustomer)
 
+func destroyCustomer(i : int):
+	var c = customers[i]
+	customers.remove_at(i)
+	c.queue_free()
+
 func _process(delta):
+	for i in customers.size():
+		if(customers[i].readyForDeletion):
+			destroyCustomer(i)
+	
 	for i in customers.size():
 		if(i == 0):
 			customers[i].firstInLine = true
 		
-		var position = customers[i].progress - customerSpeed * delta
-		position = clamp(position, i * customerFollowDistance, $Customers.curve.get_baked_length())
+		var customerPosition = customers[i].progress - customerSpeed * delta
+		customerPosition = clamp(customerPosition, i * customerFollowDistance, $Customers.curve.get_baked_length())
 		
-		customers[i].progress = position
+		customers[i].progress = customerPosition
 		if customers[i].progress > $Customers.curve.get_baked_length():
 			Global.endGame()
 

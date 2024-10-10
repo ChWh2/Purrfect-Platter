@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cxk61j12owwph"]
+[gd_scene load_steps=5 format=3 uid="uid://cxk61j12owwph"]
 
 [ext_resource type="Script" path="res://Scripts/Classes/CustomerClass.gd" id="1_cf4kh"]
 
@@ -6,15 +6,19 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f756n"]
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_nt5kw"]
+height = 3.0
+radius = 1.5
+
 [node name="PathFollow3D" type="PathFollow3D"]
 script = ExtResource("1_cf4kh")
 
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
+[node name="Body" type="RigidBody3D" parent="."]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Body"]
 mesh = SubResource("CapsuleMesh_yhahy")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body"]
 shape = SubResource("CapsuleShape3D_f756n")
 
 [node name="Patience" type="Timer" parent="."]
@@ -29,4 +33,12 @@ text = "Time
 "
 font_size = 100
 
+[node name="FishGrab Radius" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FishGrab Radius"]
+shape = SubResource("CylinderShape3D_nt5kw")
+
 [connection signal="timeout" from="Patience" to="." method="patienceTimeout"]
+[connection signal="body_entered" from="FishGrab Radius" to="." method="enterGrabRadius"]
