@@ -16,6 +16,7 @@ func patienceTimeout():
 func enterGrabRadius(body):
 	if body is Grabable:
 		if body.itemID == 2:
+			Global.SCORE += 1
 			eatFish(body)
 			readyForDeletion = true
 

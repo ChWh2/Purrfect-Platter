@@ -7,7 +7,6 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y1ct4"]
 resource_name = "Material"
 vertex_color_use_as_albedo = true
-albedo_color = Color(1, 1, 1, 1)
 albedo_texture = ExtResource("3_grmix")
 emission_enabled = true
 emission = Color(1, 1, 1, 1)
@@ -71,7 +70,7 @@ mesh = SubResource("ArrayMesh_kc61v")
 skeleton = NodePath("")
 
 [node name="HeldPosition" type="Node3D" parent="Mesh/Body"]
-transform = Transform3D(0.0182315, 5.25618e-24, -4.44089e-16, -4.44089e-16, -7.96926e-10, -0.0182315, 0, 0.0182315, -7.96926e-10, 1.59385e-09, 0.0182315, 0.00820419)
+transform = Transform3D(0.0182315, 1.45172e-23, -4.44089e-16, -4.44089e-16, -7.96926e-10, -0.0182315, 6.61744e-24, 0.0182315, -7.96926e-10, 1.59385e-09, 0.0182315, 0.0264357)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, -8.88178e-16, 0, -8.88178e-16, 1, 0, 0, 0, 1, 0, 0, 2.38419e-07)

@@ -19,6 +19,7 @@ func destroyCustomer(i : int):
 	c.queue_free()
 
 func _ready():
+	Global.SCORE = 0
 	createCustomer()
 
 func _process(delta):

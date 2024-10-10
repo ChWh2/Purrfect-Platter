@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dffgqgytxiqmb"]
+[gd_scene load_steps=8 format=3 uid="uid://dffgqgytxiqmb"]
 
 [ext_resource type="Texture2D" uid="uid://d8v5338w4k1f" path="res://Assets/GameOver.png" id="1_mfu5s"]
 [ext_resource type="Texture2D" uid="uid://dmi0fnp1w5mny" path="res://Assets/Quit.png" id="2_iav2e"]
@@ -11,6 +11,21 @@ script/source = "extends TextureButton
 
 func _on_pressed():
 	Global.switchScene(\"res://Scenes/start_screen.tscn\")
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_iblg8"]
+font_size = 40
+outline_size = 13
+outline_color = Color(0.164706, 0.101961, 0.298039, 1)
+
+[sub_resource type="GDScript" id="GDScript_2spvd"]
+resource_name = "Score Display"
+script/source = "extends Label
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	text = str(\"Score:\\n\", Global.SCORE)
 "
 
 [node name="End Screen" type="Control"]
@@ -60,9 +75,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 45.0
+offset_left = 155.0
 offset_top = 110.0
-offset_right = 310.0
+offset_right = 420.0
 offset_bottom = 254.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -76,14 +91,34 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -310.0
+offset_left = -420.0
 offset_top = 110.0
-offset_right = -45.0
+offset_right = -155.0
 offset_bottom = 254.0
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("3_m4cdu")
 script = SubResource("GDScript_tdpcp")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = 79.0
+offset_right = 148.0
+offset_bottom = 270.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Score:
+0"
+label_settings = SubResource("LabelSettings_iblg8")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = SubResource("GDScript_2spvd")
 
 [connection signal="pressed" from="Quit" to="Quit" method="_on_pressed"]
 [connection signal="pressed" from="Menu" to="Menu" method="_on_pressed"]

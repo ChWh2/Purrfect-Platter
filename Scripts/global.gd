@@ -4,6 +4,8 @@ var heldItem : Node3D = null
 
 var player : CharacterBody3D
 
+var SCORE : int = 0
+
 func switchScene(newScene : String):
 	get_tree().change_scene_to_file(newScene)
 

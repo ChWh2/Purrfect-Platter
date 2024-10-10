@@ -48,6 +48,7 @@ func interactEvent(_distance):
 		burnTimer.stop()
 		cookTimer.stop()
 		CurentState = state.EMPTY
+		$Ready.text = ""
 		$Fire.emitting = false
 		
 	elif CurentState == state.EMPTY:
@@ -79,6 +80,7 @@ func cookTimeout():
 	
 	CurentState = state.BURNING
 	burnTimer.start()
+	$Ready.text = "!"
 	CanInteract = true
 	
 func burnTimeout():

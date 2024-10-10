@@ -49,6 +49,8 @@ collision_mask = 2147483649
 script = ExtResource("1_v6mar")
 emptyText = "Put in"
 fullText = "Take Out"
+cookTime = 5.0
+burnTime = 15.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_u8rsp")
@@ -72,6 +74,12 @@ explosiveness = 0.18
 collision_base_size = 0.1
 process_material = SubResource("ParticleProcessMaterial_kty5h")
 draw_pass_1 = SubResource("SphereMesh_c1v5v")
+
+[node name="Ready" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 1
+modulate = Color(1, 0.266667, 0, 1)
+font_size = 128
 
 [connection signal="timeout" from="CookTimer" to="." method="cookTimeout"]
 [connection signal="timeout" from="BurnTimer" to="." method="burnTimeout"]
