@@ -25,5 +25,5 @@ func interactEvent(_distance : float) -> void:
 		rb.axis_lock_linear_x = true
 		rb.axis_lock_linear_y = true
 		rb.axis_lock_linear_z = true
-		
+	
 	Global.heldItem = self

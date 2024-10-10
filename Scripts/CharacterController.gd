@@ -7,6 +7,9 @@ var speed = 5.0
 
 var interactsInRadius : Array[Interactable]
 
+func _ready():
+	Global.player = self
+
 func InteractEnter(enterBody : Node3D):
 	interactsInRadius.append(enterBody)
 
@@ -23,10 +26,10 @@ func Interact():
 		
 		for interactible in interactsInRadius.size():
 			if interactsInRadius[interactible].CanInteract:
-				var dist = Vector2(position.x, position.z).distance_to(Vector2(interactsInRadius[interactible].position.x,interactsInRadius[interactible].position.z))
+				var dist = Vector2(global_position.x, global_position.z).distance_to(Vector2(interactsInRadius[interactible].global_position.x,interactsInRadius[interactible].global_position.z))
 				
 				if dist < closestInteractableRadius:
-					closestInteractableRadius = position.distance_to(interactsInRadius[interactible].position)
+					closestInteractableRadius = global_position.distance_to(interactsInRadius[interactible].global_position)
 					closestInteractable = interactsInRadius[interactible]
 		
 		if closestInteractable:

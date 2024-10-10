@@ -1,0 +1,94 @@
+[gd_scene load_steps=5 format=3 uid="uid://dffgqgytxiqmb"]
+
+[ext_resource type="Texture2D" uid="uid://d8v5338w4k1f" path="res://Assets/GameOver.png" id="1_mfu5s"]
+[ext_resource type="Texture2D" uid="uid://cxqi28uoa0fvb" path="res://Assets/Start.png" id="2_x07un"]
+
+[sub_resource type="GDScript" id="GDScript_tdpcp"]
+resource_name = "StartGame"
+script/source = "extends TextureButton
+
+func _on_pressed():
+	Global.switchScene(\"res://Scenes/main.tscn\")
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_savwg"]
+font_size = 40
+outline_size = 13
+outline_color = Color(0.164706, 0.101961, 0.298039, 1)
+
+[node name="End Screen" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50000.0
+offset_top = -5000.0
+offset_right = 50000.0
+offset_bottom = 5000.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.995986, 0.660594, 0.581117, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -372.0
+offset_top = -277.5
+offset_right = 372.0
+offset_bottom = 89.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_mfu5s")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -132.5
+offset_top = 109.0
+offset_right = 132.5
+offset_bottom = 253.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("2_x07un")
+script = SubResource("GDScript_tdpcp")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = 92.0
+offset_right = -168.0
+offset_bottom = 283.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "WASD to move
+Q to Throw
+E to Interact"
+label_settings = SubResource("LabelSettings_savwg")
+vertical_alignment = 1
+
+[connection signal="pressed" from="TextureButton" to="TextureButton" method="_on_pressed"]

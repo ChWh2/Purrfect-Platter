@@ -30,9 +30,10 @@ func _process(_delta: float) -> void:
 
 func testIfCanInteract() -> bool:
 	if CurentState == state.EMPTY:
-		if Global.heldItem is Grabable:
-			if Global.heldItem.itemID == 1 and CurentState != state.COOKING:
-				return true
+		if is_instance_valid(Global.heldItem):
+			if Global.heldItem is Grabable:
+				if Global.heldItem.itemID == 1 and CurentState != state.COOKING:
+					return true
 	elif CurentState != state.COOKING:
 		if Global.heldItem == null:
 			return true
