@@ -34,4 +34,7 @@ func _process(delta):
 		c.progress = customerPosition
 
 func customerSpawnTimeout():
+	$CustomerSpawnTimer.wait_time -= $CustomerSpawnTimer.wait_time/7.0
+	$CustomerSpawnTimer.wait_time = clamp($CustomerSpawnTimer.wait_time, 6, 15)
+	
 	createCustomer()
