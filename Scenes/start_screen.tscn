@@ -1,20 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://c8wephha5n0io"]
+[gd_scene load_steps=7 format=3 uid="uid://c8wephha5n0io"]
 
 [ext_resource type="Texture2D" uid="uid://ybtw43rg0a2t" path="res://Assets/Title.png" id="1_oxyyp"]
+[ext_resource type="Texture2D" uid="uid://dmi0fnp1w5mny" path="res://Assets/Quit.png" id="2_7tr0c"]
 [ext_resource type="Texture2D" uid="uid://cxqi28uoa0fvb" path="res://Assets/Start.png" id="2_dqltf"]
+[ext_resource type="Script" path="res://Scripts/quit.gd" id="3_2jcb7"]
 
-[sub_resource type="GDScript" id="GDScript_tdpcp"]
+[sub_resource type="LabelSettings" id="LabelSettings_savwg"]
+font_size = 40
+outline_size = 13
+outline_color = Color(0.164706, 0.101961, 0.298039, 1)
+
+[sub_resource type="GDScript" id="GDScript_fkqwu"]
 resource_name = "StartGame"
 script/source = "extends TextureButton
 
 func _on_pressed():
 	Global.switchScene(\"res://Scenes/main.tscn\")
 "
-
-[sub_resource type="LabelSettings" id="LabelSettings_savwg"]
-font_size = 40
-outline_size = 13
-outline_color = Color(0.164706, 0.101961, 0.298039, 1)
 
 [node name="StartScreen" type="Control"]
 layout_mode = 3
@@ -56,22 +58,6 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_oxyyp")
 
-[node name="TextureButton" type="TextureButton" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -132.5
-offset_top = 109.0
-offset_right = 132.5
-offset_bottom = 253.0
-grow_horizontal = 2
-grow_vertical = 2
-texture_normal = ExtResource("2_dqltf")
-script = SubResource("GDScript_tdpcp")
-
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -91,4 +77,37 @@ E to Interact"
 label_settings = SubResource("LabelSettings_savwg")
 vertical_alignment = 1
 
-[connection signal="pressed" from="TextureButton" to="TextureButton" method="_on_pressed"]
+[node name="Quit" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 45.0
+offset_top = 110.0
+offset_right = 310.0
+offset_bottom = 254.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("2_7tr0c")
+script = ExtResource("3_2jcb7")
+
+[node name="Start" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -310.0
+offset_top = 110.0
+offset_right = -45.0
+offset_bottom = 254.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("2_dqltf")
+script = SubResource("GDScript_fkqwu")
+
+[connection signal="pressed" from="Quit" to="Quit" method="_on_pressed"]
+[connection signal="pressed" from="Start" to="Start" method="_on_pressed"]

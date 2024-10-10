@@ -12,28 +12,25 @@ func createCustomer():
 	newCustomer.progress_ratio = 1.0
 	
 	customers.append(newCustomer)
-	print(customers)
 
 func destroyCustomer(i : int):
 	var c = customers[i]
 	customers.remove_at(i)
 	c.queue_free()
 
+func _ready():
+	createCustomer()
+
 func _process(delta):
-	for i in customers.size():
-		if(customers[i].readyForDeletion):
-			destroyCustomer(i)
+	for c in customers:
+		if(c.readyForDeletion):
+			destroyCustomer(customers.find(c))
 	
-	for i in customers.size():
-		if(i == 0):
-			customers[i].firstInLine = true
+	for c in customers:
+		var customerPosition = c.progress - customerSpeed * delta
+		customerPosition = clamp(customerPosition,  customers.find(c) * customerFollowDistance, $Customers.curve.get_baked_length())
 		
-		var customerPosition = customers[i].progress - customerSpeed * delta
-		customerPosition = clamp(customerPosition, i * customerFollowDistance, $Customers.curve.get_baked_length())
-		
-		customers[i].progress = customerPosition
-		if customers[i].progress > $Customers.curve.get_baked_length():
-			Global.endGame()
+		c.progress = customerPosition
 
 func customerSpawnTimeout():
 	createCustomer()

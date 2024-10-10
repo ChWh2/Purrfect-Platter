@@ -4,8 +4,6 @@ extends PathFollow3D
 @onready var patience = $Patience
 @onready var patienceBar = $PatienceBar
 
-var firstInLine : bool = false
-
 var readyForDeletion : bool = false
 
 

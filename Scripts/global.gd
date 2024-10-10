@@ -26,4 +26,4 @@ func useItem() -> void:
 	heldItem = null
 
 func endGame() -> void:
-	print("endGame")
+	switchScene("res://Scenes/end_screen.tscn")
