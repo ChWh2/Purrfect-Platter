@@ -342,6 +342,6 @@ autostart = true
 [node name="Fish" type="Node3D" parent="."]
 
 [node name="FishSpawner" parent="." instance=ExtResource("5_l7jbb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, -0.5, -8.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, -0.4, -8.5)
 
 [connection signal="timeout" from="CustomerSpawnTimer" to="." method="customerSpawnTimeout"]
