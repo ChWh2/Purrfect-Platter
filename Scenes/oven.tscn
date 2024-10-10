@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://dw8xks7h06bia"]
+[gd_scene load_steps=12 format=4 uid="uid://dw8xks7h06bia"]
 
 [ext_resource type="Script" path="res://Scripts/Oven.gd" id="1_v6mar"]
 [ext_resource type="Texture2D" uid="uid://c6l4mcusk68rx" path="res://Assets/Color Palette.png" id="2_srqt4"]
@@ -33,6 +33,28 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kty5h"]
+spread = 180.0
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, -1, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bgfjw"]
+render_priority = 0
+shader = ExtResource("3_upwuc")
+shader_parameter/outline_color = Color(1, 0.713726, 0, 1)
+shader_parameter/outline_width = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0jd2h"]
+next_pass = SubResource("ShaderMaterial_bgfjw")
+shading_mode = 0
+albedo_color = Color(1, 0.466667, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_c1v5v"]
+material = SubResource("StandardMaterial3D_0jd2h")
+radius = 0.1
+height = 0.2
+
 [node name="Oven" type="StaticBody3D"]
 collision_layer = 2147483649
 collision_mask = 2147483649
@@ -46,3 +68,22 @@ shape = SubResource("BoxShape3D_u8rsp")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 mesh = SubResource("ArrayMesh_j0ml1")
+
+[node name="CookTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="BurnTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Fire" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.324304, 0)
+emitting = false
+amount = 100
+lifetime = 0.4
+explosiveness = 0.18
+collision_base_size = 0.1
+process_material = SubResource("ParticleProcessMaterial_kty5h")
+draw_pass_1 = SubResource("SphereMesh_c1v5v")
+
+[connection signal="timeout" from="CookTimer" to="." method="cookTimeout"]
+[connection signal="timeout" from="BurnTimer" to="." method="burnTimeout"]

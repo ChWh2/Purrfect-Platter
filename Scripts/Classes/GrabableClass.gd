@@ -2,6 +2,7 @@ class_name Grabable
 extends Interactable
 
 @export var itemName : String
+@export var itemID : int
 
 func _process(_delta: float) -> void:
 	if Global.heldItem:
