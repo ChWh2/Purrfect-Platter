@@ -47,7 +47,7 @@ height = 0.2
 collision_layer = 2147483649
 collision_mask = 2147483649
 script = ExtResource("1_v6mar")
-emptyText = "Put In"
+emptyText = "Put in"
 fullText = "Take Out"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

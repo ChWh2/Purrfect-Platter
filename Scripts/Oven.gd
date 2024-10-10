@@ -22,37 +22,67 @@ func _ready():
 	CanInteract = true
 	setPrompt(emptyText)
 
-func _process(delta: float) -> void:
-	if(CurentState == state.EMPTY):
-		$Fire.emitting = false
-	else:
-		$Fire.emitting = true
+func _process(_delta: float) -> void:
+	CanInteract = testIfCanInteract()
 	
-	if(CurentState == state.COOKING):
-		CanInteract = false
-	else:
-		CanInteract = true
+	if(currentItem):
+		currentItem.position = position
+
+func testIfCanInteract() -> bool:
+	if CurentState == state.EMPTY:
+		if Global.heldItem is Grabable:
+			if Global.heldItem.itemID == 1 and CurentState != state.COOKING:
+				return true
+	elif CurentState != state.COOKING:
+		if Global.heldItem == null:
+			return true
+	
+	return false
 
 func interactEvent(_distance):
 	if CurentState == state.BURNING or CurentState == state.BURNT:
+		Global.heldItem = currentItem
+		currentItem = null
+		
+		burnTimer.stop()
+		cookTimer.stop()
 		CurentState = state.EMPTY
+		$Fire.emitting = false
+		
 	elif CurentState == state.EMPTY:
+		currentItem = Global.heldItem
+		Global.heldItem = null
+		
 		CurentState = state.COOKING
 		cookTimer.start()
+		$Fire.emitting = true
+		CanInteract = false
 
 func getPrompt() -> String:
-
-	if CurentState == state.BURNING or CurentState == state.BURNT:
+	if CanInteract == false:
+		setPrompt("")
+	elif CurentState == state.BURNING or CurentState == state.BURNT:
 		setPrompt(fullText)
 	elif CurentState == state.EMPTY:
 		setPrompt(emptyText)
-		
+	else:
+		setPrompt("")
+	
 	return Prompt
 
 func cookTimeout():
 	print("cooked")
+	
+	if currentItem is Grabable:
+		currentItem.itemID = 2
+	
 	CurentState = state.BURNING
 	burnTimer.start()
+	CanInteract = true
+	
 func burnTimeout():
+	if currentItem is Grabable:
+		currentItem.itemID = 3
+	
 	print("burnt")
 	CurentState = state.BURNT

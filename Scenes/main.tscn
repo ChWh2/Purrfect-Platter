@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://c802ljbjsrs7s"]
+[gd_scene load_steps=27 format=4 uid="uid://c802ljbjsrs7s"]
 
 [ext_resource type="PackedScene" uid="uid://cbbiwytnqg1wm" path="res://Scenes/player.tscn" id="1_4acyf"]
 [ext_resource type="PackedScene" uid="uid://dw8xks7h06bia" path="res://Scenes/oven.tscn" id="4_f5kfh"]
@@ -13,10 +13,6 @@ sky_material = SubResource("ProceduralSkyMaterial_w10n7")
 [sub_resource type="Environment" id="Environment_exvx2"]
 background_mode = 2
 sky = SubResource("Sky_86yhv")
-
-[sub_resource type="GDScript" id="GDScript_02dxj"]
-resource_name = "Fish"
-script/source = "extends Grabable"
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_4jcst"]
 _surfaces = [{
@@ -247,11 +243,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, -0.5, -8)
 [node name="rawFish" parent="." instance=ExtResource("5_2u07w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0.190262, -2.42524)
 
-[node name="rawFish2" parent="." instance=ExtResource("5_2u07w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 0)
-script = SubResource("GDScript_02dxj")
-itemName = "Raw Fish"
-
 [node name="Map" type="Node3D" parent="."]
 
 [node name="Road" type="MeshInstance3D" parent="Map"]
@@ -331,3 +322,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0.5, 7)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Map/InvisibleWall"]
 shape = SubResource("BoxShape3D_gvvnr")
+
+[editable path="rawFish"]

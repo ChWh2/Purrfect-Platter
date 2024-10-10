@@ -4,17 +4,17 @@ extends Interactable
 @export var itemName : String
 @export var itemID : int
 
-func _process(_delta: float) -> void:
-	if Global.heldItem:
-		CanInteract = false
-		Prompt = ""
-		if Input.is_action_just_pressed("Throw"):
-			pass
-	else:
+func _physics_process(_delta: float) -> void:
+	if !Global.heldItem:
 		CanInteract = true
 		Prompt = str("Pick up ", itemName)
+	else:
+		CanInteract = false
+		Prompt = ""
+	
+	
 
-func interactEvent(distance : float) -> void:
+func interactEvent(_distance : float) -> void:
 	var testForRigidbodyArray = self.get_parent().get_children()
 	var rb : RigidBody3D
 	for i in testForRigidbodyArray.size():

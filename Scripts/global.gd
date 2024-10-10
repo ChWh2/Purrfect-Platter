@@ -7,7 +7,7 @@ var player : CharacterBody3D
 func _ready() -> void:
 	player = get_tree().current_scene.get_node("player")
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if heldItem:
 		heldItem.global_position = player.get_node("Mesh/Body/HeldPosition").global_position
 		
