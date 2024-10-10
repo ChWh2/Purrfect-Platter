@@ -23,7 +23,9 @@ func Interact():
 		
 		for interactible in interactsInRadius.size():
 			if interactsInRadius[interactible].CanInteract:
-				if position.distance_to(interactsInRadius[interactible].position) < closestInteractableRadius:
+				var dist = Vector2(position.x, position.z).distance_to(Vector2(interactsInRadius[interactible].position.x,interactsInRadius[interactible].position.z))
+				
+				if dist < closestInteractableRadius:
 					closestInteractableRadius = position.distance_to(interactsInRadius[interactible].position)
 					closestInteractable = interactsInRadius[interactible]
 		

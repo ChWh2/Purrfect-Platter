@@ -19,11 +19,11 @@ func destroyCustomer(i : int):
 	c.queue_free()
 
 func _process(delta):
-	for i in customers.size():
+	for i in customers.size() - 1:
 		if(customers[i].readyForDeletion):
 			destroyCustomer(i)
 	
-	for i in customers.size():
+	for i in customers.size() - 1:
 		if(i == 0):
 			customers[i].firstInLine = true
 		
